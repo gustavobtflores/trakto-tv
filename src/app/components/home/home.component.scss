@@ -1,0 +1,140 @@
+@import "../../variables";
+
+@mixin pages-icon($background) {
+  background: $background;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    mask-image: url("/assets/clip-path.svg");
+    position: absolute;
+    mask-size: contain;
+  }
+}
+
+.header {
+  background: #252323;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+
+  .controls {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      display: flex;
+      align-items: center;
+
+      &:not(:first-of-type) {
+        margin-left: 32px;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 1px;
+          height: 24px;
+          background: $neutral-light;
+          margin-right: 32px;
+          opacity: 32%;
+        }
+      }
+    }
+
+    &__date {
+      display: flex;
+      align-items: center;
+      color: $neutral-light;
+      gap: 8px;
+      font-size: $paragraph-size-lg;
+    }
+
+    &__user {
+      gap: 4px;
+
+      &-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+      }
+    }
+  }
+}
+
+.content {
+  height: calc(100% - 76px);
+  background: #252323;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(#414141, 0.2);
+    mask-image: url("/assets/clip-path.svg");
+    position: absolute;
+    mask-size: contain;
+  }
+
+  &__pages {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 68px;
+    position: relative;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      &__title {
+        font-family: "Poppins", sans-serif;
+        font-size: 48px;
+        color: $neutral-white;
+      }
+
+      &__icon {
+        width: 373px;
+        height: 373px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        border: 31px solid #464141;
+        overflow: hidden;
+        position: relative;
+
+        &.material {
+          @include pages-icon(#c2d8ff);
+        }
+
+        &.quiz {
+          @include pages-icon(#91dea2);
+        }
+
+        &.drawing {
+          @include pages-icon(#f4aeff);
+        }
+
+        &.youtube {
+          @include pages-icon(#ffbfbf);
+        }
+
+        img {
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+  }
+}
