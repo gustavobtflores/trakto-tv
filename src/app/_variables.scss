@@ -1,13 +1,19 @@
-$light-blue: #eff2f9;
-$neutral-darkest: #04183e;
-$neutral-light: #e4ebfb;
 $neutral-white: #ffffff;
+$neutral-light: #e4ebfb;
+$neutral-cloudy: #7183a6;
+$neutral-dark: #252323;
+
 $brand-blue: #0095ff;
+$brand-blue-light: #66bfff;
 $brand-green: #1dc763;
+$brand-yellow: #ffc13d;
 
-$background-color: $light-blue;
+$blue-light: #eff2f9;
+$blue-darkest: #04183e;
 
-$headings-color: $neutral-darkest;
+$background-color: $blue-light;
+
+$headings-color: $blue-darkest;
 
 $label-active-color: $brand-blue;
 
@@ -19,6 +25,7 @@ $input-padding-y: 16px;
 $input-padding-x: 16px;
 
 $title-size-sm: 1.25rem;
+$title-size-md: 1.5rem;
 
 $font-weight-medium: 500;
 $font-weight-bold: 700;

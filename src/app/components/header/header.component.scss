@@ -1,0 +1,74 @@
+@import "/src/app/variables";
+
+.light {
+  --background: #{$neutral-white};
+  --text: #{$neutral-cloudy};
+  --icon-color: #{$neutral-cloudy};
+}
+
+.dark {
+  --background: #{$neutral-dark};
+  --text: #{$neutral-light};
+  --icon-color: #{$neutral-light};
+}
+
+.header {
+  background: var(--background);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+
+  &__wrapper {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      display: flex;
+      align-items: center;
+
+      svg {
+        color: var(--icon-color);
+      }
+
+      &:not(:first-of-type) {
+        margin-left: 32px;
+
+        &::before {
+          content: "";
+          display: block;
+          width: 1px;
+          height: 24px;
+          background: var(--text);
+          margin-right: 32px;
+          opacity: 32%;
+        }
+      }
+    }
+
+    &__date {
+      display: flex;
+      align-items: center;
+      color: var(--text);
+      gap: 8px;
+      font-size: $paragraph-size-lg;
+    }
+
+    &__user {
+      gap: 4px;
+
+      &-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+      }
+    }
+  }
+}

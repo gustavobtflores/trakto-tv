@@ -15,63 +15,33 @@
   }
 }
 
-.header {
-  background: #252323;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 64px;
-
-  .controls {
-    display: flex;
-    align-items: center;
-
-    &__item {
-      display: flex;
-      align-items: center;
-
-      &:not(:first-of-type) {
-        margin-left: 32px;
-
-        &::before {
-          content: "";
-          display: block;
-          width: 1px;
-          height: 24px;
-          background: $neutral-light;
-          margin-right: 32px;
-          opacity: 32%;
-        }
-      }
-    }
-
-    &__date {
-      display: flex;
-      align-items: center;
-      color: $neutral-light;
-      gap: 8px;
-      font-size: $paragraph-size-lg;
-    }
-
-    &__user {
-      gap: 4px;
-
-      &-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 100%;
-      }
-    }
+@mixin title-border($color) {
+  &::after {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: $color;
+    margin: 0 auto;
   }
 }
 
 .content {
-  height: calc(100% - 76px);
-  background: #252323;
+  height: 100%;
+  background: $neutral-dark;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+
+  .container {
+    height: 100%;
+  }
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 
   &::before {
     content: "";
@@ -96,11 +66,50 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      background: none;
+      border: none;
+      gap: 32px;
+
+      &:not(:disabled) {
+        cursor: pointer;
+      }
 
       &__title {
         font-family: "Poppins", sans-serif;
         font-size: 48px;
         color: $neutral-white;
+      }
+
+      &.material &__icon {
+        @include pages-icon(#c2d8ff);
+      }
+
+      &.material &__title {
+        @include title-border(#4173cd);
+      }
+
+      &.quiz &__icon {
+        @include pages-icon(#91dea2);
+      }
+
+      &.quiz &__title {
+        @include title-border(#1dc763);
+      }
+
+      &.drawing &__icon {
+        @include pages-icon(#f4aeff);
+      }
+
+      &.drawing &__title {
+        @include title-border(#f6b5ff);
+      }
+
+      &.youtube &__icon {
+        @include pages-icon(#ffbfbf);
+      }
+
+      &.youtube &__title {
+        @include title-border(#ff0000);
       }
 
       &__icon {
@@ -113,22 +122,6 @@
         border: 31px solid #464141;
         overflow: hidden;
         position: relative;
-
-        &.material {
-          @include pages-icon(#c2d8ff);
-        }
-
-        &.quiz {
-          @include pages-icon(#91dea2);
-        }
-
-        &.drawing {
-          @include pages-icon(#f4aeff);
-        }
-
-        &.youtube {
-          @include pages-icon(#ffbfbf);
-        }
 
         img {
           position: relative;

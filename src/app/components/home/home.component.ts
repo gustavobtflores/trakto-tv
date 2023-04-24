@@ -6,31 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  currentDate = new Intl.DateTimeFormat('pt-BR').format(new Date());
   pages = [
     {
       identifier: 'material',
       title: 'Material didático',
       image: 'material.png',
-      route: '/material',
+      route: '/platform/material',
     },
     {
       identifier: 'quiz',
       title: 'Quiz',
       image: 'quiz.png',
-      route: '',
+      route: null,
     },
     {
       identifier: 'drawing',
       title: 'Desenho',
       image: 'drawing.png',
-      route: '',
+      route: null,
     },
     {
       identifier: 'youtube',
       title: 'Youtube',
       image: 'youtube.png',
-      route: '',
+      route: null,
     },
   ];
 }
