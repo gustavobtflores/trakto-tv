@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -59,8 +60,9 @@ export class LoginComponent {
         })
       )
       .subscribe((res) => {
-        const user = {
-          avatar: res.logo.url.raw.url,
+        const user: User = {
+          name: res['firstname'],
+          avatar: res['logo']['url']['raw']['url'],
         };
 
         this.storageService.setAccessToken(res['access_token']);

@@ -1,7 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../interfaces/user';
+
+interface UserResponse {
+  access_token: string;
+  logo: {
+    url: {
+      raw: {
+        url: string;
+      };
+    };
+  };
+  firstname: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +20,8 @@ import { User } from '../interfaces/user';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(user: { email: string; password: string }): Observable<User> {
-    return this.http.post<User>(
+  login(user: { email: string; password: string }): Observable<UserResponse> {
+    return this.http.post<UserResponse>(
       'https://api.trakto.io/auth/signin',
       JSON.stringify(user),
       {
