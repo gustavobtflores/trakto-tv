@@ -2,6 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import Swiper from 'swiper';
 
+interface Material {
+  title: string;
+  id: string;
+  thumbs: {
+    low: string;
+  };
+  pages: [];
+}
+
 @Component({
   selector: 'app-material',
   templateUrl: './material.component.html',
@@ -10,48 +19,7 @@ import Swiper from 'swiper';
 export class MaterialComponent {
   constructor(private http: HttpClient) {}
 
-  materialSlides = [
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-    {
-      title: 'Aula 1: Fono-ortografia',
-      amount: 5,
-      image: 'https://picsum.photos/200',
-    },
-  ];
+  materialSlides: Material[] = [];
 
   ngOnInit() {
     var swiper = new Swiper('.swiper', {
@@ -62,10 +30,24 @@ export class MaterialComponent {
 
     this.http
       .get(
-        'https://api.trakto.io/document?total_per_page=10&order_by=title&order_orientation=desc'
+        'https://api.trakto.io/document?total_per_page=10&order_by=updated_at&order_orientation=desc',
+        {
+          headers: {
+            Accept: '*/*',
+          },
+        }
       )
       .subscribe((res: any) => {
-        console.log(res);
+        const items = res.data.map(({ id, pages, thumbs, title }: Material) => {
+          return {
+            id,
+            pages,
+            thumbs,
+            title,
+          };
+        });
+
+        this.materialSlides = items;
       });
   }
 }

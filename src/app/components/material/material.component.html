@@ -52,36 +52,18 @@
       >
       <div class="swiper content__box-slides">
         <div class="swiper-wrapper">
-          <div
+          <a
             class="swiper-slide content__box-slide"
             *ngFor="let slide of materialSlides"
+            [href]="'https://editor.trakto.io/editor/' + slide.id"
+            target="_blank"
           >
             <div class="content__box-slide__image">
-              <img [src]="slide.image" alt="" />
-              <span>{{ slide.amount }} Slides</span>
+              <img [src]="slide.thumbs.low" alt="" width="310" height="174" />
+              <span>{{ slide.pages.length }} Slides</span>
             </div>
-            <span>{{ slide.title }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content__box">
-      <h3 class="content__box-title">Material didático</h3>
-      <span class="content__box-subtitle"
-        >Acesse suas últimas apresentações de aula</span
-      >
-      <div class="swiper content__box-slides">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide content__box-slide"
-            *ngFor="let slide of materialSlides"
-          >
-            <div class="content__box-slide__image">
-              <img [src]="slide.image" alt="" />
-              <span>{{ slide.amount }} Slides</span>
-            </div>
-            <span>{{ slide.title }}</span>
-          </div>
+            <span class="content__box-slide__title">{{ slide.title }}</span>
+          </a>
         </div>
       </div>
     </div>
