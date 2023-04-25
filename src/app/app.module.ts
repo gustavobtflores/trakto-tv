@@ -13,6 +13,7 @@ import { MaterialComponent } from './components/material/material.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
       multi: true,
     },
     CookieService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })

@@ -31,6 +31,12 @@ export class LoginComponent {
     }
   }
 
+  ngOnInit() {
+    if (this.storageService.isLogged()) {
+      this._router.navigate(['/platform/home']);
+    }
+  }
+
   async signIn(e: Event) {
     e.preventDefault();
     this.isLoading = true;
@@ -54,6 +60,7 @@ export class LoginComponent {
       )
       .subscribe((res: any) => {
         this.storageService.setAccessToken(res['access_token']);
+        this.storageService.setUser(res);
         this._router.navigate(['/platform/home']);
       });
   }
