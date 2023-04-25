@@ -14,64 +14,118 @@
     flex-direction: column;
     max-width: 300px;
     width: 100%;
+  }
 
-    svg {
-      margin-bottom: 40px;
-    }
+  &__logo {
+    margin-bottom: 40px;
+  }
 
-    h1 {
-      color: $headings-color;
-      font-size: $title-size-sm;
-      font-weight: $font-weight-bold;
-      margin-bottom: 24px;
-    }
+  &__title {
+    color: $headings-color;
+    font-size: $title-size-sm;
+    font-weight: $font-weight-bold;
+    margin-bottom: 24px;
+  }
 
-    form {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    label {
+      font-size: $paragraph-size-sm;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      transition: color $transition-duration ease;
+      gap: 4px;
+      width: 100%;
+      color: $blue-darkest;
 
-      label {
-        font-size: $paragraph-size-sm;
-        display: flex;
-        flex-direction: column;
-        transition: color $transition-duration ease;
-        gap: 4px;
-        width: 100%;
-
-        input {
-          border: 1px solid $input-border-color;
-          border-radius: 4px;
-          padding: $input-padding-y $input-padding-x;
-          transition: border $transition-duration;
-          font-size: $paragraph-size-md;
-        }
-
-        input:focus {
-          border: 1px solid $label-active-color;
-          outline: none;
-        }
-      }
-
-      label:focus-within {
-        color: $label-active-color;
-      }
-
-      button {
-        padding: 16px;
-        border-radius: 8px;
-        border: none;
-        background: $button-primary-bg;
-        color: $neutral-white;
+      input {
+        border: 1px solid $input-border-color;
+        border-radius: 4px;
+        padding: $input-padding-y $input-padding-x;
+        transition: border $transition-duration;
         font-size: $paragraph-size-md;
-        font-weight: $font-weight-medium;
-        transition: background-color $transition-duration;
-        cursor: pointer;
+        caret-color: $brand-blue-light;
+      }
 
-        &:hover {
-          background-color: #17944b;
-        }
+      input:focus {
+        border: 1px solid $label-active-color;
+        outline: none;
       }
     }
+
+    label:focus-within {
+      color: $label-active-color;
+    }
+
+    &-submit {
+      padding: 16px;
+      border-radius: 8px;
+      border: none;
+      background: $button-primary-bg;
+      color: $neutral-white;
+      font-size: $paragraph-size-md;
+      font-weight: $font-weight-medium;
+      transition: background-color $transition-duration;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      &:not(.loading) &__spinner {
+        display: none;
+      }
+
+      &__container {
+        position: relative;
+      }
+
+      &__spinner {
+        width: 15px;
+        height: auto;
+        position: absolute;
+        left: -21px;
+      }
+
+      &:hover {
+        background-color: #17944b;
+      }
+    }
+  }
+}
+
+#spinner-trakto-body {
+  animation: rotate 2s linear infinite;
+  transform-origin: center;
+  z-index: 2;
+  position: absolute;
+}
+
+#spinner-trakto-circle {
+  stroke: #ffffff;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
   }
 }

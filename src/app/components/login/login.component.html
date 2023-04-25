@@ -1,6 +1,7 @@
 <div class="login">
   <div class="login-wrapper">
     <svg
+      class="login__logo"
       width="125"
       height="30"
       viewBox="0 0 125 30"
@@ -16,8 +17,8 @@
         fill="#FE6E46"
       />
     </svg>
-    <h1>Olá, faça login em sua conta.</h1>
-    <form (ngSubmit)="signIn($event)">
+    <h1 class="login__title">Olá, faça login em sua conta.</h1>
+    <form class="login__form" (ngSubmit)="signIn($event)">
       <label for="email">
         E-mail
         <input
@@ -26,6 +27,7 @@
           id="email"
           class="login-wrapper__input"
           placeholder="Endereço de e-mail"
+          autocomplete="username"
           required
           [(ngModel)]="user.email"
         />
@@ -38,11 +40,42 @@
           id="password"
           class="login-wrapper__input"
           placeholder="Digite sua senha"
+          autocomplete="current-password"
           required
           [(ngModel)]="user.password"
         />
       </label>
-      <button type="submit">Entrar</button>
+
+      <button
+        class="login__form-submit"
+        type="submit"
+        [ngClass]="{ loading: isLoading }"
+      >
+        <div class="login__form-submit__container">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="login__form-submit__spinner"
+            viewBox="0 0 50 50"
+            id="spinner-trakto"
+          >
+            <g id="spinner-trakto">
+              <g id="spinner-trakto-body">
+                <circle
+                  id="spinner-trakto-circle"
+                  class="path"
+                  cx="25"
+                  cy="25"
+                  r="20"
+                  fill="none"
+                  stroke-width="5"
+                />
+              </g>
+            </g>
+          </svg>
+          {{ isLoading ? "Entrando..." : "Entrar" }}
+        </div>
+      </button>
     </form>
   </div>
 </div>
