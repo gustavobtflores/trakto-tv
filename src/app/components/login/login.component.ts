@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -58,9 +58,13 @@ export class LoginComponent {
           return throwError(() => new Error(error.error.message));
         })
       )
-      .subscribe((res: any) => {
+      .subscribe((res) => {
+        const user = {
+          avatar: res.logo.url.raw.url,
+        };
+
         this.storageService.setAccessToken(res['access_token']);
-        this.storageService.setUser(res);
+        this.storageService.setUser(user);
         this._router.navigate(['/platform/home']);
       });
   }

@@ -26,8 +26,6 @@ export class AuthGuard {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log(this.storageService.isLogged());
-
     if (!this.storageService.isLogged()) this._router.navigate(['/login']);
 
     return this.storageService.isLogged();

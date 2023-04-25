@@ -1,8 +1,8 @@
-import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 const USER_KEY = '@TraktoTv:user';
-const ACCESS_KEY = '@TraktoTv:accessToken';
+const ACCESS_KEY = 'accessToken';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +14,16 @@ export class StorageService {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public getUser(): void {
-    localStorage.getItem(USER_KEY);
+  public getUser() {
+    const user = localStorage.getItem(USER_KEY);
+
+    if (user) return JSON.parse(user);
+
+    return null;
   }
 
   public setAccessToken(token: string) {
-    this.cookieService.set(ACCESS_KEY, token);
+    this.cookieService.set(ACCESS_KEY, token, 1);
   }
 
   public getAccessToken(): string {
@@ -27,6 +31,6 @@ export class StorageService {
   }
 
   public isLogged(): boolean {
-    return localStorage.getItem(USER_KEY) !== null;
+    return this.cookieService.check(ACCESS_KEY);
   }
 }
