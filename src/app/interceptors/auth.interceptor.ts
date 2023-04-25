@@ -1,3 +1,4 @@
+import { StorageService } from './../services/storage.service';
 import {
   HttpEvent,
   HttpHandler,
@@ -5,28 +6,25 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  static accessToken = '';
-
-  constructor(private cookieService: CookieService) {}
+  constructor(private storageService: StorageService) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    AuthInterceptor.accessToken = this.cookieService.get('accessToken');
+    const accessToken = this.storageService.getAccessToken();
 
-    if (AuthInterceptor.accessToken === '') {
+    if (!accessToken) {
       return next.handle(request);
     }
 
     const req = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${AuthInterceptor.accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 

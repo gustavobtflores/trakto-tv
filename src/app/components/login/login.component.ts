@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private _router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private storageService: StorageService
   ) {}
 
   handleError(error: HttpErrorResponse) {
@@ -50,7 +52,8 @@ export class LoginComponent {
           return throwError(() => new Error(error.error.message));
         })
       )
-      .subscribe((res) => {
+      .subscribe((res: any) => {
+        this.storageService.setAccessToken(res['access_token']);
         this._router.navigate(['/platform/home']);
       });
   }
