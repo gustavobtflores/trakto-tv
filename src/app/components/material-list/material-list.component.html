@@ -2,7 +2,7 @@
 <section class="content">
   <div class="container">
     <div class="content__box">
-      <app-card></app-card>
+      <app-card *ngFor="let slide of materialSlides" [slide]="slide"></app-card>
     </div>
   </div>
 </section>
