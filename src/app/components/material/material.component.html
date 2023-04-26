@@ -52,18 +52,11 @@
       >
       <div class="swiper content__box-slides">
         <div class="swiper-wrapper">
-          <a
+          <app-card
             class="swiper-slide content__box-slide"
             *ngFor="let slide of materialSlides"
-            [href]="'https://editor.trakto.io/editor/' + slide.id"
-            target="_blank"
-          >
-            <div class="content__box-slide__image">
-              <img [src]="slide.thumbs.low" alt="" width="310" height="174" />
-              <span>{{ slide.pages.length }} Slides</span>
-            </div>
-            <span class="content__box-slide__title">{{ slide.title }}</span>
-          </a>
+            [slide]="slide"
+          ></app-card>
         </div>
       </div>
     </div>

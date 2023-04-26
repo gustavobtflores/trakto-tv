@@ -1,0 +1,39 @@
+@import "/src/app/variables";
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+
+  &__image {
+    position: relative;
+    border-radius: 8px;
+    max-height: 174px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: rgba(12, 12, 12, 0.7);
+      border-radius: 500px;
+      padding: 4px 8px;
+      color: $neutral-white;
+      font-size: $paragraph-size-md;
+      margin: 16px;
+    }
+  }
+
+  &__title {
+    font-size: $paragraph-size-lg;
+    color: $blue-dark;
+  }
+}
