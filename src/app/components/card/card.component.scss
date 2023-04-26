@@ -1,6 +1,7 @@
 @import "/src/app/variables";
 
 .slide {
+  max-width: 310px;
   display: flex;
   flex-direction: column;
   gap: 16px;
