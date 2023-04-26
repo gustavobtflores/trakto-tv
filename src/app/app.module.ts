@@ -14,6 +14,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './guards/auth.guard';
+import { MaterialListComponent } from './components/material-list/material-list.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AuthGuard } from './guards/auth.guard';
     HomeComponent,
     MaterialComponent,
     HeaderComponent,
+    MaterialListComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
