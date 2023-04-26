@@ -76,6 +76,23 @@
     margin-top: 48px;
     padding: 56px 72px;
 
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-button {
+      background: none;
+      padding: 16px 24px;
+      border-radius: 8px;
+      border: 1px solid $brand-trakto-app;
+      font-weight: $font-weight-medium;
+      font-size: $paragraph-size-lg;
+      color: $brand-trakto-app;
+      cursor: pointer;
+    }
+
     &-title {
       color: $blue-dark;
       font-size: $title-size-md;

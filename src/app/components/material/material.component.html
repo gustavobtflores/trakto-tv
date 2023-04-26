@@ -46,10 +46,20 @@
       </div>
     </div>
     <div class="content__box">
-      <h3 class="content__box-title">Material didático</h3>
-      <span class="content__box-subtitle"
-        >Acesse suas últimas apresentações de aula</span
-      >
+      <div class="content__box-wrapper">
+        <div>
+          <h3 class="content__box-title">Material didático</h3>
+          <span class="content__box-subtitle"
+            >Acesse suas últimas apresentações de aula</span
+          >
+        </div>
+        <button
+          class="content__box-button"
+          routerLink="/platform/material/list"
+        >
+          Ver todo conteúdo
+        </button>
+      </div>
       <div class="swiper content__box-slides">
         <div class="swiper-wrapper">
           <app-card
