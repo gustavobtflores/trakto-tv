@@ -23,7 +23,13 @@ export class StorageService {
   }
 
   public setAccessToken(token: string) {
-    this.cookieService.set(ACCESS_KEY, token, 1);
+    const expireTime = new Date(new Date().getTime() + 1000 * 60 * 15); // 15 minutes
+
+    this.cookieService.set(ACCESS_KEY, token, {
+      sameSite: 'None',
+      secure: true,
+      expires: expireTime,
+    });
   }
 
   public getAccessToken(): string {
