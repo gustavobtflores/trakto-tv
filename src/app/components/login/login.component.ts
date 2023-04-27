@@ -40,6 +40,7 @@ export class LoginComponent {
     e.preventDefault();
     if (this.loginForm.invalid) {
       this.isLoading = false;
+      this.loginForm.markAllAsTouched();
       return;
     }
 
@@ -61,6 +62,7 @@ export class LoginComponent {
           this.toastr.error('Email ou senha incorretos', '', {
             progressBar: true,
           });
+          return;
         }
 
         this.toastr.error(err.error.message, '', {
