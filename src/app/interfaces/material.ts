@@ -5,4 +5,5 @@ export interface Material {
     low: string;
   };
   pages: [];
+  updated_at?: string;
 }

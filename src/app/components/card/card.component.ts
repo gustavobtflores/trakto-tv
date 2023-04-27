@@ -6,7 +6,7 @@ interface Slide {
   thumbs: {
     low: string;
   };
-  pages: string[];
+  pages: string[] | null;
 }
 
 @Component({
