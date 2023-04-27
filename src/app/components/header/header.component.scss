@@ -26,6 +26,28 @@
     justify-content: space-between;
   }
 
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+
+    &__change-enviroment {
+      display: flex;
+      align-items: center;
+      background: none;
+      color: $neutral-cloudy;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 24px;
+      font-size: $title-size-sm;
+      gap: 8px;
+      box-shadow: 0 0 0 1px $neutral-cloudy;
+      transition: background-color 0.3s ease;
+      font-weight: $font-weight-medium;
+      cursor: pointer;
+    }
+  }
+
   .controls {
     display: flex;
     align-items: center;
