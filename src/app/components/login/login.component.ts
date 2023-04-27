@@ -48,7 +48,7 @@ export class LoginComponent {
       next: (res) => {
         const user: User = {
           name: res['firstname'],
-          avatar: res['logo']['url']['raw']['url'],
+          avatar: res['logo']?.['url']['raw']['url'] || null,
         };
 
         this.storageService.setAccessToken(res['access_token']);
