@@ -14,7 +14,7 @@ export class MaterialListComponent {
   materialSlides: Material[] = [];
 
   ngOnInit() {
-    this.dataService.getMaterials().subscribe((res) => {
+    this.dataService.getMaterials(15).subscribe((res) => {
       const items = res.data.map(({ id, pages, thumbs, title }) => {
         return {
           id,
