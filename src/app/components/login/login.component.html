@@ -18,38 +18,49 @@
       />
     </svg>
     <h1 class="login__title">Olá, faça login em sua conta.</h1>
-    <form class="login__form" (ngSubmit)="signIn($event)">
-      <label for="email">
+    <form
+      [formGroup]="loginForm"
+      class="login__form"
+      (ngSubmit)="signIn($event)"
+    >
+      <label
+        for="email"
+        class="login__form-label"
+        [ngClass]="{'has-error': formControls['email'].errors?.['required'] && formControls['email'].touched}"
+      >
         E-mail
         <input
-          name="email"
+          formControlName="email"
           type="text"
           id="email"
-          class="login-wrapper__input"
+          class="login__form-input"
           placeholder="Endereço de e-mail"
           autocomplete="username"
-          required
-          [(ngModel)]="user.email"
         />
+        <span class="login__form-error">O campo email é obrigatório</span>
       </label>
-      <label for="password">
+      <label
+        for="password"
+        class="login__form-label"
+        [ngClass]="{'has-error': formControls['password'].errors?.['required'] && formControls['password'].touched}"
+      >
         Senha
         <input
-          name="password"
+          formControlName="password"
           type="password"
           id="password"
-          class="login-wrapper__input"
+          class="login__form-input"
           placeholder="Digite sua senha"
           autocomplete="current-password"
-          required
-          [(ngModel)]="user.password"
         />
+        <span class="login__form-error">O campo senha é obrigatório</span>
       </label>
 
       <button
         class="login__form-submit"
         type="submit"
         [ngClass]="{ loading: isLoading }"
+        [disabled]="isLoading"
       >
         <div class="login__form-submit__container">
           <svg
