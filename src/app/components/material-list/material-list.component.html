@@ -2,7 +2,16 @@
 <section class="content">
   <div class="container">
     <div class="content__box">
-      <app-card *ngFor="let slide of materialSlides" [slide]="slide"></app-card>
+      <h3 class="content__box-title">Material didático</h3>
+      <span class="content__box-subtitle"
+        >Acesse suas últimas apresentações de aula</span
+      >
+      <div class="content__box-wrapper">
+        <app-card
+          *ngFor="let slide of materialSlides"
+          [slide]="slide"
+        ></app-card>
+      </div>
     </div>
   </div>
 </section>

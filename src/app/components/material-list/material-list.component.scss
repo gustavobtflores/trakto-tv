@@ -8,11 +8,28 @@
   &__box {
     background: $neutral-white;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    row-gap: 28px;
-    column-gap: 32px;
     padding: 56px 42px 56px 72px;
+
+    &-title {
+      font-size: $title-size-md;
+      font-weight: $font-weight-bold;
+      line-height: 28px;
+      color: $blue-dark;
+      margin-bottom: 8px;
+    }
+
+    &-subtitle {
+      font-size: $paragraph-size-lg;
+      color: $neutral-cloudy;
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      row-gap: 28px;
+      column-gap: 32px;
+      margin-top: 28px;
+    }
   }
 }
