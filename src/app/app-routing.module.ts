@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MaterialComponent } from './components/material/material.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MaterialListComponent } from './components/material-list/material-list.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'signin',
     component: LoginComponent,
+    canActivate: [LoginGuard],
   },
   {
     path: 'platform/home',

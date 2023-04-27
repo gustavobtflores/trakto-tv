@@ -30,10 +30,6 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    if (this.storageService.isLogged()) {
-      this._router.navigate(['/platform/home']);
-    }
-
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -67,7 +63,9 @@ export class LoginComponent {
           });
         }
 
-        return throwError(() => new Error(err.error.message));
+        this.toastr.error(err.error.message, '', {
+          progressBar: true,
+        });
       },
     });
   }

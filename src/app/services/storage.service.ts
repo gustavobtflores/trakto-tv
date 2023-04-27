@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../interfaces/user';
 
 const USER_KEY = '@TraktoTv:user';
 const ACCESS_KEY = 'accessToken';
@@ -10,7 +11,7 @@ const ACCESS_KEY = 'accessToken';
 export class StorageService {
   constructor(private cookieService: CookieService) {}
 
-  public setUser(user: any): void {
+  public setUser(user: User): void {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
@@ -23,7 +24,7 @@ export class StorageService {
   }
 
   public setAccessToken(token: string) {
-    const expireTime = new Date(new Date().getTime() + 1000 * 60 * 15); // 15 minutes
+    const expireTime = new Date(new Date().getTime() + 1000 * 60 * 60 * 24); // 1 day
 
     this.cookieService.set(ACCESS_KEY, token, {
       sameSite: 'None',
@@ -36,7 +37,7 @@ export class StorageService {
     return this.cookieService.get(ACCESS_KEY);
   }
 
-  public isLogged(): boolean {
+  public isLoggedIn(): boolean {
     return this.cookieService.check(ACCESS_KEY);
   }
 }

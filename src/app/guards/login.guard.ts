@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
   Router,
   RouterStateSnapshot,
   UrlTree,
@@ -12,7 +11,7 @@ import { StorageService } from '../services/storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard {
+export class LoginGuard {
   constructor(
     private storageService: StorageService,
     private _router: Router
@@ -26,8 +25,9 @@ export class AuthGuard {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.storageService.isLoggedIn()) this._router.navigate(['/login']);
+    if (this.storageService.isLoggedIn())
+      this._router.navigate(['/platform/home']);
 
-    return this.storageService.isLoggedIn();
+    return !this.storageService.isLoggedIn();
   }
 }
