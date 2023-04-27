@@ -1,31 +1,41 @@
-# TraktoTv
+## Pré-requisitos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+Antes de clonar e executar um aplicativo Angular, é necessário verificar se o Node.js e o Angular CLI estão instalados corretamente na máquina, através dos comandos no terminal:
 
-## Development server
+```
+node -v
+ng version
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Se os comandos acima retornarem as versões do Node.js e do Angular CLI instaladas em sua máquina, você está pronto para clonar e executar p aplicativo.
 
-## Code scaffolding
+## Clonando o repositório
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Abra o terminal em sua máquina.
+2. Navegue até o diretório onde deseja clonar o repositório.
+3. Clone o repositório com o seguinte comando:
 
-## Build
+```
+git clone https://github.com/gustavobtflores/trakto-tv.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalando as dependências
 
-## Running unit tests
+1. Navegue até o diretório do repositório clonado.
+2. Instale as dependências com o comando abaixo:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm install
+```
 
-## Running end-to-end tests
+## Rodando o aplicativo
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Ainda no diretório do repositório clonado, digite o comando abaixo para rodar o aplicativo Angular:
 
-## Further help
+```
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Anotações
-
-PlatformComponent (Header (CurrentRoute == opening) + RouterOutlet) > Component
+2. Pressione Enter. O Angular CLI irá compilar o aplicativo e iniciar um servidor local.
+3. Abra o navegador e acesse a URL fornecida pelo Angular CLI (normalmente http://localhost:4200).
+4. O aplicativo Angular deverá ser exibido no navegador.
